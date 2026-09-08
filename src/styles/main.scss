@@ -7,5 +7,8 @@
 @use "./components/header";
 @use "./components/button";
 @use "./components/input";
+@use "./components/loader";
+@use "./components/error-state";
 
 @use "./pages/auth";
+@use "./pages/dashboard";

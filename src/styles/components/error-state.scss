@@ -1,0 +1,17 @@
+.error-state {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #fecaca;
+  border-radius: 16px;
+
+  &__title {
+    color: #991b1b;
+    font-size: 20px;
+  }
+
+  &__message {
+    color: #7f1d1d;
+  }
+}
