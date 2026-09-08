@@ -7,7 +7,8 @@ import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "@/pages/RegisterPage/RegisterPage";
 
 import MainLayout from "@/shared/layouts/MainLayout/MainLayout";
-
+import ProtectedLayout from "@/shared/layouts/ProtectedLayout/ProtectedLayout";
+ 
 function AppRouter() {
   return (
     <BrowserRouter>
@@ -16,7 +17,11 @@ function AppRouter() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+
+          <Route element={<ProtectedLayout />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+          </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </MainLayout>

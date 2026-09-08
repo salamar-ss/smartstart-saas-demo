@@ -1,0 +1,24 @@
+export type UserRole = "admin" | "user";
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+};
+
+export type LoginCredentials = {
+  email: string;
+  password: string;
+};
+
+export type RegisterCredentials = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+export type AuthResponse = {
+  user: User;
+  token: string;
+};
