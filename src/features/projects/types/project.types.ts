@@ -1,18 +1,19 @@
-export type ProjectStatus = "draft" | "published";
-
 export type Project = {
-  id: string;
-  name: string;
-  audience: string;
-  offer: string;
-  status: ProjectStatus;
-  createdAt: string;
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
 };
 
 export type CreateProjectInput = {
-  name: string;
-  audience: string;
-  offer: string;
+  title: string;
+  body: string;
+  userId: number;
 };
 
-export type CreateProjectResponse = Project;
+export type UpdateProjectInput = {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+};

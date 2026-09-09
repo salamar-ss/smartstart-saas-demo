@@ -1,45 +1,31 @@
-import type { CreateProjectInput, CreateProjectResponse, Project } from "@/features/projects/types/project.types";
+import { apiClient } from "@/shared/api/apiClient";
 
-const fakeProjects: Project[] = [
-  {
-    id: "1",
-    name: "Coach Launch Page",
-    audience: "online coaches",
-    offer: "a simple landing page that explains their coaching offer",
-    status: "draft",
-    createdAt: "2026-06-01",
-  },
-  {
-    id: "2",
-    name: "Creative Portfolio Funnel",
-    audience: "artists and designers",
-    offer: "a portfolio page with a clear inquiry CTA",
-    status: "published",
-    createdAt: "2026-06-03",
-  },
-];
-
-function wait(milliseconds: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, milliseconds);
-  });
-}
+import type { CreateProjectInput, Project, UpdateProjectInput } from "@/features/projects/types/project.types";
 
 export async function getProjects(): Promise<Project[]> {
-  await wait(600);
+  const response = await apiClient.get<Project[]>("/posts");
 
-  return fakeProjects;
+  return response.data.slice(0, 12);
 }
 
-export async function createProject(input: CreateProjectInput): Promise<CreateProjectResponse> {
-  await wait(700);
+export async function getProjectById(id: number): Promise<Project> {
+  const response = await apiClient.get<Project>(`/posts/${id}`);
 
-  return {
-    id: crypto.randomUUID(),
-    name: input.name,
-    audience: input.audience,
-    offer: input.offer,
-    status: "draft",
-    createdAt: new Date().toISOString(),
-  };
+  return response.data;
+}
+
+export async function createProject(project: CreateProjectInput): Promise<Project> {
+  const response = await apiClient.post<Project>("/posts", project);
+
+  return response.data;
+}
+
+export async function updateProject(project: UpdateProjectInput): Promise<Project> {
+  const response = await apiClient.put<Project>(`/posts/${project.id}`, project);
+
+  return response.data;
+}
+
+export async function deleteProject(id: number): Promise<void> {
+  await apiClient.delete(`/posts/${id}`);
 }

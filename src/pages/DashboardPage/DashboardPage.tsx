@@ -7,7 +7,7 @@ import Loader from "@/shared/components/Loader/Loader";
 
 function DashboardPage() {
   const { user } = useAuth();
-  const { projects, isLoadingProjects, projectsError, refetchProjects } = useProjects();
+  const { data: projects, isLoading, isError, refetch } = useProjects();
 
   return (
     <Container>
@@ -17,18 +17,16 @@ function DashboardPage() {
           <p>Welcome, {user?.name}. Your SmartStart projects will be listed here.</p>
         </div>
 
-        {isLoadingProjects && <Loader text="Loading projects..." />}
+        {isLoading && <Loader text="Loading projects..." />}      
 
-        {projectsError && <ErrorState title="Failed to load projects" message="Please try again." onRetry={() => refetchProjects()} />}
-
-        {!isLoadingProjects && !projectsError && (
+        {isError && <ErrorState message="Failed to load projects." actionLabel="Try again" onAction={() => refetch()} />}
+        
+        {projects && (
           <div className="dashboard-page__grid">
             {projects.map((project) => (
               <article className="project-card" key={project.id}>
-                <span className="project-card__status">{project.status}</span>
-                <h2 className="project-card__title">{project.name}</h2>
-                <p className="project-card__text">Audience: {project.audience}</p>
-                <p className="project-card__text">Offer: {project.offer}</p>
+                <h2 className="project-card__title">{project.title}</h2>
+                <p className="project-card__text">{project.body}</p>
               </article>
             ))}
           </div>
