@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import DashboardPage from "@/pages/DashboardPage/DashboardPage";
+import GeneratorPage from "@/pages/GeneratorPage/GeneratorPage";
 import HomePage from "@/pages/HomePage/HomePage";
 import LoginPage from "@/pages/LoginPage/LoginPage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
@@ -20,6 +21,7 @@ function AppRouter() {
 
           <Route element={<ProtectedLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/generator" element={<GeneratorPage />} />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />

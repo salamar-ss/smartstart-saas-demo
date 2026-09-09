@@ -7,8 +7,11 @@
 @use "./components/header";
 @use "./components/button";
 @use "./components/input";
+@use "./components/textarea";
+@use "./components/select";
 @use "./components/loader";
 @use "./components/error-state";
 
 @use "./pages/auth";
 @use "./pages/dashboard";
+@use "./pages/generator";

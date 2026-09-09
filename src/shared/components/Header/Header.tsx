@@ -26,9 +26,15 @@ function Header() {
             </NavLink>
 
             {isAuthenticated && (
-              <NavLink to="/dashboard" className={getLinkClass}>
-                Dashboard
-              </NavLink>
+               <>
+                <NavLink to="/generator" className={getLinkClass}>
+                  Generator
+                </NavLink>
+
+                <NavLink to="/dashboard" className={getLinkClass}>
+                  Dashboard
+                </NavLink>
+              </>
             )}
 
             {!isAuthenticated && (
