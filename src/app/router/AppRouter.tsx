@@ -5,6 +5,7 @@ import GeneratorPage from "@/pages/GeneratorPage/GeneratorPage";
 import HomePage from "@/pages/HomePage/HomePage";
 import LoginPage from "@/pages/LoginPage/LoginPage";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
+import ProjectPreviewPage from "@/pages/ProjectPreviewPage/ProjectPreviewPage";
 import RegisterPage from "@/pages/RegisterPage/RegisterPage";
 
 import MainLayout from "@/shared/layouts/MainLayout/MainLayout";
@@ -22,6 +23,7 @@ function AppRouter() {
           <Route element={<ProtectedLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/generator" element={<GeneratorPage />} />
+            <Route path="/projects/:id" element={<ProjectPreviewPage />} />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />

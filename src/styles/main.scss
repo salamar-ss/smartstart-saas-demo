@@ -13,5 +13,7 @@
 @use "./components/error-state";
 
 @use "./pages/auth";
+@use "./pages/home";
 @use "./pages/dashboard";
 @use "./pages/generator";
+@use "./pages/project-preview";
