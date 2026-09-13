@@ -10,7 +10,6 @@ import Container from "@/shared/components/Container/Container";
 import ErrorState from "@/shared/components/ErrorState/ErrorState";
 import Loader from "@/shared/components/Loader/Loader";
 
-
 import Input from "@/shared/components/Input/Input";
 import Select from "@/shared/components/Select/Select";
 

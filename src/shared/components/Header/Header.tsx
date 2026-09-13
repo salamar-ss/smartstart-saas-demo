@@ -25,8 +25,12 @@ function Header() {
               Home
             </NavLink>
 
+            <NavLink to="/templates" className={getLinkClass}>
+              Templates
+            </NavLink>
+
             {isAuthenticated && (
-               <>
+              <>
                 <NavLink to="/generator" className={getLinkClass}>
                   Generator
                 </NavLink>
