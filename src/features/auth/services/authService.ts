@@ -1,40 +1,14 @@
 import type { AuthResponse, LoginCredentials, RegisterCredentials } from "@/features/auth/types/auth.types";
-
-const fakeUser = {
-  id: "1",
-  name: "SmartStart User",
-  email: "user@smartstart.com",
-  role: "user" as const,
-};
-
-function wait(milliseconds: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, milliseconds);
-  });
-}
+import { apiClient } from "@/shared/api/apiClient";
 
 export async function loginUser(credentials: LoginCredentials): Promise<AuthResponse> {
-  await wait(700);
+  const { data } = await apiClient.post<AuthResponse>("/auth/login", credentials);
 
-  return {
-    user: {
-      ...fakeUser,
-      email: credentials.email,
-    },
-    token: "fake-jwt-token",
-  };
+  return data;
 }
 
 export async function registerUser(credentials: RegisterCredentials): Promise<AuthResponse> {
-  await wait(700);
+  const { data } = await apiClient.post<AuthResponse>("/auth/register", credentials);
 
-  return {
-    user: {
-      id: "2",
-      name: credentials.name,
-      email: credentials.email,
-      role: "user",
-    },
-    token: "fake-register-token",
-  };
+  return data;
 }
