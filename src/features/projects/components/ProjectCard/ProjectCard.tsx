@@ -9,7 +9,7 @@ type ProjectCardProps = {
 function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="project-card">
-      <span className="project-card__status">{project.status ?? "draft"}</span>
+      <span className="project-card__status">{project.status}</span>
 
       <h2 className="project-card__title">{project.businessName || project.title}</h2>
 

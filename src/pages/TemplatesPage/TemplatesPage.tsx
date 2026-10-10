@@ -22,7 +22,7 @@ function TemplatesPage() {
   const filteredTemplates = useMemo(() => {
     const normalizedSearch = search.toLowerCase().trim();
 
-    return (templates ?? []).filter((template) => {
+    return (templates ?? []).filter((template) => { 
       const matchesSearch =
         template.title.toLowerCase().includes(normalizedSearch) ||
         template.description.toLowerCase().includes(normalizedSearch);

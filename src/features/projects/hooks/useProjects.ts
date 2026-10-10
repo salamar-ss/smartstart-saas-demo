@@ -4,21 +4,16 @@ import { createProject, deleteProject, getProjectById, getProjects, updateProjec
 
 import type { CreateProjectInput, UpdateProjectInput } from "@/features/projects/types/project.types";
 
-export const projectQueryKeys = {
-  all: ["projects"] as const,
-  detail: (id: number) => ["projects", id] as const,
-};
-
 export function useProjects() {
   return useQuery({
-    queryKey: projectQueryKeys.all,
+    queryKey: ["projects"],
     queryFn: getProjects,
   });
 }
 
 export function useProject(id: number) {
   return useQuery({
-    queryKey: projectQueryKeys.detail(id),
+    queryKey: ["projects", id],
     queryFn: () => getProjectById(id),
     enabled: Boolean(id),
   });
@@ -29,9 +24,10 @@ export function useCreateProject() {
 
   return useMutation({
     mutationFn: (project: CreateProjectInput) => createProject(project),
+
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: projectQueryKeys.all,
+        queryKey: ["projects"],
       });
     },
   });
@@ -42,13 +38,14 @@ export function useUpdateProject() {
 
   return useMutation({
     mutationFn: (project: UpdateProjectInput) => updateProject(project),
+
     onSuccess: (updatedProject) => {
       queryClient.invalidateQueries({
-        queryKey: projectQueryKeys.all,
+        queryKey: ["projects"],
       });
 
       queryClient.invalidateQueries({
-        queryKey: projectQueryKeys.detail(updatedProject.id),
+        queryKey: ["projects", updatedProject.id],
       });
     },
   });
@@ -59,9 +56,10 @@ export function useDeleteProject() {
 
   return useMutation({
     mutationFn: (id: number) => deleteProject(id),
+
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: projectQueryKeys.all,
+        queryKey: ["projects"],
       });
     },
   });

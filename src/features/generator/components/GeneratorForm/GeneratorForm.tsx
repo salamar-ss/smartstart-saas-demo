@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { generatorSchema, type GeneratorFormData } from "@/features/generator/schemas/generatorSchema";
 import type { TemplateOption } from "@/features/generator/types/generator.types";
-import { useCreateProject } from "@/features/projects/hooks/useCreateProject";
+import { useCreateProject } from "@/features/projects/hooks/useProjects";
 
 import Button from "@/shared/components/Button/Button";
 import Input from "@/shared/components/Input/Input";

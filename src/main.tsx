@@ -1,20 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-import App from "./App";
-
+import App from "@/App";
 import AppProviders from "@/app/providers/AppProviders";
-
 import AppErrorBoundary from "@/shared/components/AppErrorBoundary/AppErrorBoundary";
 
-import "./styles/main.scss";
+import "@/styles/main.scss";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
     <AppErrorBoundary>
       <AppProviders>
         <App />
       </AppProviders>
     </AppErrorBoundary>
-  </React.StrictMode>
+  </StrictMode>
 );

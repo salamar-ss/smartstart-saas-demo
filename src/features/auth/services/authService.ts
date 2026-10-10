@@ -2,13 +2,13 @@ import type { AuthResponse, LoginCredentials, RegisterCredentials } from "@/feat
 import { apiClient } from "@/shared/api/apiClient";
 
 export async function loginUser(credentials: LoginCredentials): Promise<AuthResponse> {
-  const { data } = await apiClient.post<AuthResponse>("/auth/login", credentials);
+  const response = await apiClient.post<AuthResponse>("/auth/login", credentials);
 
-  return data;
+  return response.data;
 }
 
 export async function registerUser(credentials: RegisterCredentials): Promise<AuthResponse> {
-  const { data } = await apiClient.post<AuthResponse>("/auth/register", credentials);
+  const response = await apiClient.post<AuthResponse>("/auth/register", credentials);
 
-  return data;
+  return response.data;
 }
